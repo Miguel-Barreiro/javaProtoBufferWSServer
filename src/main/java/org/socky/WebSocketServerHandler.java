@@ -1,10 +1,12 @@
 package org.socky;
 
+import com.google.protobuf.Message;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.webbitserver.WebServer;
 import org.webbitserver.WebServers;
+import samplePackage.Sample;
 
 public class WebSocketServerHandler {
 
@@ -35,7 +37,12 @@ public class WebSocketServerHandler {
             if (command.contains("send-msg") && command.length() < 10) {
                 System.out.println("Please send a proper message. You don't want to be rude");
             } else if (command.contains("send-msg")) {
-                serverHandler.getCurrentWebbitServer().getCurrentConnection().send(command.substring(command.indexOf("send-msg") + 9));
+                String content = command.substring(command.indexOf("send-msg") + 9);
+                samplePackage.Sample.Message packet = samplePackage.Sample.Message.newBuilder()
+                        .setMessage(content)
+                        .build();
+                byte[] data = packet.toByteArray();
+                serverHandler.getCurrentWebbitServer().getCurrentConnection().send(data);
             }
             command = simpleScanner.nextLine();
         }
@@ -51,7 +58,9 @@ public class WebSocketServerHandler {
         currentWebbitServer = new WebbitWebsocketServer();
         currentWebServer = WebServers.createWebServer(port).add(path, currentWebbitServer);
         currentWebServer.start();
-        Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Web Socket Server Started on port: {0} and host: {1}", new Object[]{currentWebServer.getPort(), currentWebServer.getUri()});
+        Logger.getLogger(this.getClass().getName()).
+                   log(Level.INFO, "Web Socket Server Started on port: {0} and host: {1}", 
+                            new Object[]{currentWebServer.getPort(), currentWebServer.getUri()});
         return this;
     }
 
