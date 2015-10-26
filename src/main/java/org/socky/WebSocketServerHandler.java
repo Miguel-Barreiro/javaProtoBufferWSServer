@@ -1,4 +1,4 @@
-package org.spauny.joy.socky;
+package org.socky;
 
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -6,13 +6,9 @@ import java.util.logging.Logger;
 import org.webbitserver.WebServer;
 import org.webbitserver.WebServers;
 
-/**
- *
- * @author iulian.dafinoiu
- */
 public class WebSocketServerHandler {
 
-    public static final int SOCKY_DEFAULT_PORT = 7788;
+    public static final int SOCKY_DEFAULT_PORT = 8080;
     
     private WebbitWebsocketServer currentWebbitServer;
     private WebServer currentWebServer;

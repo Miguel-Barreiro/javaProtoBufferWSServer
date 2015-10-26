@@ -1,4 +1,4 @@
-package org.spauny.joy.socky;
+package org.socky;
 
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -6,10 +6,7 @@ import java.util.logging.Logger;
 import org.webbitserver.BaseWebSocketHandler;
 import org.webbitserver.WebSocketConnection;
 
-/**
- *
- * @author iulian.dafinoiu
- */
+
 public class WebbitWebsocketServer extends BaseWebSocketHandler implements Serializable {
 
     private WebSocketConnection currentConnection;
