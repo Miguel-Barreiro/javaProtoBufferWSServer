@@ -15,19 +15,22 @@ public class WebbitWebsocketServer extends BaseWebSocketHandler implements Seria
     public void onOpen(WebSocketConnection connection) throws Exception {
         super.onOpen(connection); 
         currentConnection = connection; 
-        Logger.getLogger(WebbitWebsocketServer.class.getName()).log(Level.INFO, "++++++++++ Connection Opened.");
+        Logger.getLogger(WebbitWebsocketServer.class.getName())
+                .log(Level.INFO, "++++++++++ Connection Opened.");
     }
 
     @Override
     public void onClose(WebSocketConnection connection) throws Exception {
         super.onClose(connection);
-        Logger.getLogger(WebbitWebsocketServer.class.getName()).log(Level.INFO, "++++++++++ Connection Closed.");
+        Logger.getLogger(WebbitWebsocketServer.class.getName())
+                .log(Level.INFO, "++++++++++ Connection Closed.");
     }
 
     @Override
     public void onMessage(WebSocketConnection connection, String msg) throws Throwable {
         super.onMessage(connection, msg);
-        Logger.getLogger(WebbitWebsocketServer.class.getName()).log(Level.INFO, "++++++++++ Message: {0}", msg);
+        Logger.getLogger(WebbitWebsocketServer.class.getName())
+                .log(Level.INFO, "++++++++++ Message: {0}", msg);
     }
     
     public void closeConnection() {

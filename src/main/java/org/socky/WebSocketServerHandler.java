@@ -56,7 +56,8 @@ public class WebSocketServerHandler {
     
     public WebSocketServerHandler startServer(String path, int port) {
         currentWebbitServer = new WebbitWebsocketServer();
-        currentWebServer = WebServers.createWebServer(port).add(path, currentWebbitServer);
+        currentWebServer = WebServers.createWebServer(port)
+                            .add(path, currentWebbitServer);
         currentWebServer.start();
         Logger.getLogger(this.getClass().getName()).
                    log(Level.INFO, "Web Socket Server Started on port: {0} and host: {1}", 
